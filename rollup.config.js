@@ -23,16 +23,10 @@ const proprocessStyle = ({ content, attributes }) => {
       },
       (err, result) => {
         if (err) return reject(err);
-
         const css = result.css.toString();
-
-        // resolve({
-        //   code: css
-        // });
         postcss([autoprefixer, cssvariables])
           .process(css, { from: undefined })
           .then(result2 => {
-            // console.log(result2.css.toString());
             resolve({
               code: result2.css.toString()
               // map: result.map.toString()
@@ -62,8 +56,18 @@ export default [
     output: {
       // sourcemap: true,
       format: "iife",
-      name: "button",
-      file: "dist/button.js"
+      name: "Button",
+      file: "dist/elements/button.js"
+    },
+    plugins
+  },
+  {
+    input: "src/CloseButton.html",
+    output: {
+      // sourcemap: true,
+      format: "iife",
+      name: "CloseButton",
+      file: "dist/elements/close-button.js"
     },
     plugins
   }

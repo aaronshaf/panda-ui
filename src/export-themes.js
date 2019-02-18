@@ -6,6 +6,7 @@ const canvasHighContrast = require("@instructure/ui-themes/lib/canvas/high-contr
 const { generatePropsFromTheme } = require("./utils.js");
 
 mkdirp.sync(__dirname + "/../dist/themes");
+mkdirp.sync(__dirname + "/../dist/elements");
 mkdirp.sync(__dirname + "/themes/canvas");
 mkdirp.sync(__dirname + "/themes/canvas-high-contrast");
 

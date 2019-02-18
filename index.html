@@ -1,4 +1,5 @@
 <html data-theme="canvas">
+  <!-- data-theme="canvas-high-contrast" also works -->
   <head>
     <title>Panda UI demo</title>
 
@@ -26,23 +27,18 @@
       <script src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/no.js" defer></script>
     -->
 
-    <!-- Global stylesheet -->
-    <link rel="stylesheet" href="dist/themes/canvas.css" />
-
     <style>
       /* Avoid flash of undefined elements */
       *:not(:defined) {
         visibility: hidden;
       }
-
-      /* Example usage of canvas.css custom properties */
       body {
-        font-family: var(--typography-fontFamily);
+        font-family: sans-serif;
       }
       panda-alert {
         display: block;
-        margin-top: var(--spacing-xSmall);
-        margin-bottom: var(--spacing-xSmall);
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
       }
     </style>
   </head>

@@ -35,6 +35,9 @@ Panda UI is a set of stylesheets and web components in the likeness (and based o
   src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/checkmark.js"
   defer
 ></script>
+```
+
+```html
 <panda-alert variant="success">
   <div slot="icon"><panda-icon-checkmark></panda-icon-checkmark></div>
   <div slot="content">
@@ -47,6 +50,9 @@ Panda UI is a set of stylesheets and web components in the likeness (and based o
 
 ```html
 <script src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/button.js"></script>
+```
+
+```html
 <panda-button variant="primary">
   Primary button
 </panda-button>
@@ -59,6 +65,9 @@ Panda UI is a set of stylesheets and web components in the likeness (and based o
   src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/progress-bar.js"
   defer
 ></script>
+```
+
+```html
 <panda-progress-bar
   label="Loading completion"
   max="60"

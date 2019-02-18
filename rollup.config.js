@@ -3,8 +3,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import sass from "node-sass";
-// import sass2 from "rollup-plugin-sass";
-import cssvariables from "postcss-css-variables";
+// import cssvariables from "postcss-css-variables";
 import autoprefixer from "autoprefixer";
 import postcss from "postcss";
 
@@ -24,7 +23,7 @@ const proprocessStyle = ({ content, attributes }) => {
       (err, result) => {
         if (err) return reject(err);
         const css = result.css.toString();
-        postcss([autoprefixer, cssvariables])
+        postcss([autoprefixer])
           .process(css, { from: undefined })
           .then(result2 => {
             resolve({
@@ -51,10 +50,15 @@ const plugins = [
 ];
 
 const components = [
+  ["src/elements/Avatar.html", "dist/elements/avatar.js"],
   ["src/elements/Alert.html", "dist/elements/alert.js"],
   ["src/elements/Button.html", "dist/elements/button.js"],
-  ["src/icons/Warning.html", "dist/icons/warning.js"]
-  // ["src/CloseButton.html", "dist/elements/close-button.js"]
+  ["src/elements/CloseButton.html", "dist/elements/close-button.js"],
+  ["src/icons/Warning.html", "dist/icons/warning.js"],
+  ["src/icons/Checkmark.html", "dist/icons/checkmark.js"],
+  ["src/icons/Info.html", "dist/icons/info.js"],
+  ["src/icons/No.html", "dist/icons/no.js"],
+  ["src/icons/X.html", "dist/icons/x.js"]
 ];
 
 export default components.map(([from, to]) => ({

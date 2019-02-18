@@ -1,14 +1,22 @@
-<button class="root {variant} medium width--auto borderRadius--rounded">
+<button
+  class="{theme}-theme root {variant} medium width--auto borderRadius--rounded"
+>
   <span class="content"><slot></slot></span>
 </button>
 
 <style type="text/scss">
   @import "./themes/canvas/Button.scss";
+  @import "./themes/canvas-high-contrast/Button.scss";
   @import "./Button.scss";
 </style>
 
 <script>
   export default {
-    tag: "panda-button"
+    tag: "panda-button",
+    data() {
+      return {
+        theme: document.firstChild.dataset.theme || "canvas"
+      };
+    }
   };
 </script>

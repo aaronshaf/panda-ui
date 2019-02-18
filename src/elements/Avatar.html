@@ -1,0 +1,26 @@
+<span
+  class="View-root View-display--inline-block root medium circle"
+  data-cid="Avatar"
+  style="margin: 0px 0.75rem 0px 0px;"
+  ><img
+    src="234ae9c4b7b65cb6da0916f5091372a6.jpg"
+    class="loadImage"
+    aria-hidden="true"
+/></span>
+
+<style type="text/scss">
+  @import "./themes/canvas/Avatar.scss";
+  @import "./themes/canvas-high-contrast/Avatar.scss";
+  @import "./Avatar.scss";
+</style>
+
+<script>
+  export default {
+    tag: "panda-avatar",
+    data() {
+      return {
+        theme: document.firstChild.dataset.theme || "canvas"
+      };
+    }
+  };
+</script>

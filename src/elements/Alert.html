@@ -1,4 +1,4 @@
-<div class="alert {variant}">
+<div class="{theme}-theme alert {variant}">
   <div class="icon">
     <slot name="icon">[icon]</slot>
   </div>
@@ -9,11 +9,17 @@
 
 <style type="text/scss">
   @import "./themes/canvas/Alert.scss";
+  @import "./themes/canvas-high-contrast/Alert.scss";
   @import "./Alert.scss";
 </style>
 
 <script>
   export default {
-    tag: "panda-alert"
+    tag: "panda-alert",
+    data() {
+      return {
+        theme: document.firstChild.dataset.theme || "canvas"
+      };
+    }
   };
 </script>

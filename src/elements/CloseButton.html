@@ -1,0 +1,33 @@
+<span class="{theme}-theme root placement--static"
+  ><button
+    type="button"
+    tabindex="0"
+    class="View-root Button-root Button-icon Button-small Button-width--icon Button-borderRadius--rounded Button-has-icon"
+    data-cid="Button"
+    style="margin: 0px; cursor: pointer;"
+  >
+    <span class="Button-content"
+      ><span class="Button-iconSVG"> <slot name="icon">[icon]</slot> </span
+      ><span class="ScreenReaderContent-root"
+        ><slot name="label">Label</slot></span
+      ></span
+    >
+  </button></span
+>
+
+<style type="text/scss">
+  @import "./themes/canvas/CloseButton.scss";
+  @import "./themes/canvas-high-contrast/CloseButton.scss";
+  @import "./CloseButton.scss";
+</style>
+
+<script>
+  export default {
+    tag: "panda-close-button",
+    data() {
+      return {
+        theme: document.firstChild.dataset.theme || "canvas"
+      };
+    }
+  };
+</script>

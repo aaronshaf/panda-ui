@@ -12,6 +12,10 @@ const files = [
   [
     "node_modules/@instructure/ui-alerts/src/components/Alert/styles.css",
     "Alert.scss"
+  ],
+  [
+    "node_modules/@instructure/ui-elements/src/components/Avatar/styles.css",
+    "Avatar.scss"
   ]
 ];
 for (const [from, to] of files) {

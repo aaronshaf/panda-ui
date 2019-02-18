@@ -18,7 +18,7 @@
   "scripts": {
     "build": "yarn run prepare && rollup -c",
     "autobuild": "rollup -c -w",
-    "dev": "yarn run prepare && run-p start:dev autobuild",
+    "dev": "run-p start:dev autobuild",
     "start": "sirv public",
     "start:dev": "sirv public --dev",
     "prepare": "node src/import-styles.js && node src/export-themes.js"
@@ -26,6 +26,7 @@
   "dependencies": {
     "@instructure/ui-alerts": "^5.41.1",
     "@instructure/ui-buttons": "^5.41.1",
+    "@instructure/ui-elements": "^5.41.1",
     "@instructure/ui-layout": "^5.41.1",
     "@instructure/ui-themes": "^5.41.1",
     "autoprefixer": "^9.4.7",

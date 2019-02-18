@@ -17,10 +17,9 @@ const objToVars = (prefix, obj) => {
   }, []);
 };
 
-exports.generatePropsFromTheme = (element, vars) => {
+exports.generatePropsFromTheme = (selector, vars) => {
   let cssParts = objToVars("-", vars);
-  // ${element}
-  return `:root {
+  return `${selector} {
 ${cssParts
   .sort(abcSort)
   .map(part => `  ${part}`)

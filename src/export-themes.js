@@ -22,10 +22,11 @@ fs.writeFileSync(
 
 const { Button, CloseButton } = require("@instructure/ui-buttons");
 const { Alert } = require("@instructure/ui-alerts");
-
+const { Avatar } = require("@instructure/ui-elements");
 const { View } = require("@instructure/ui-layout");
 
 [
+  [Avatar, "Avatar"],
   [Alert, "Alert"],
   [Button, "Button"],
   [CloseButton, "CloseButton"],
@@ -33,12 +34,12 @@ const { View } = require("@instructure/ui-layout");
 ].forEach(([component, name]) => {
   fs.writeFileSync(
     __dirname + `/themes/canvas/${name}.scss`,
-    generatePropsFromTheme(`.${name}`, component.generateTheme())
+    generatePropsFromTheme(`.canvas-theme`, component.generateTheme())
   );
   fs.writeFileSync(
     __dirname + `/themes/canvas-high-contrast/${name}.scss`,
     generatePropsFromTheme(
-      `.${name}`,
+      `.canvas-high-contrast-theme`,
       component.generateTheme("canvas-high-contrast")
     )
   );

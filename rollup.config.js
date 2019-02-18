@@ -3,67 +3,68 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import sass from "node-sass";
+// import sass2 from "rollup-plugin-sass";
+import cssvariables from "postcss-css-variables";
+import autoprefixer from "autoprefixer";
+import postcss from "postcss";
 
 const production = !process.env.ROLLUP_WATCH;
 
-export default {
-  input: "src/main.js",
-  output: {
-    sourcemap: true,
-    format: "iife",
-    name: "app",
-    file: "public/bundle.js"
-  },
-  plugins: [
-    svelte({
-      // opt in to v3 behaviour today
-      skipIntroByDefault: true,
-      nestedTransitions: true,
-      customElement: true,
+const proprocessStyle = ({ content, attributes }) => {
+  if (attributes.type !== "text/scss") return;
 
-      // enable run-time checks when not in production
-      dev: !production,
-      preprocess: {
-        style: ({ content, attributes }) => {
-          if (attributes.type !== "text/scss") return;
-
-          return new Promise((fulfil, reject) => {
-            sass.render(
-              {
-                data: content,
-                includePaths: ["src"],
-                sourceMap: true,
-                outFile: "x" // this is necessary, but is ignored
-              },
-              (err, result) => {
-                if (err) return reject(err);
-
-                fulfil({
-                  code: result.css.toString(),
-                  map: result.map.toString()
-                });
-              }
-            );
-          });
-        }
+  return new Promise((resolve, reject) => {
+    sass.render(
+      {
+        data: content,
+        includePaths: ["src"],
+        sourceMap: true,
+        outFile: "x" // necessary but ignored
       },
-      // we'll extract any component CSS out into
-      // a separate file — better for performance
-      css: css => {
-        css.write("public/bundle.css");
+      (err, result) => {
+        if (err) return reject(err);
+
+        const css = result.css.toString();
+
+        // resolve({
+        //   code: css
+        // });
+        postcss([autoprefixer, cssvariables])
+          .process(css, { from: undefined })
+          .then(result2 => {
+            // console.log(result2.css.toString());
+            resolve({
+              code: result2.css.toString()
+              // map: result.map.toString()
+            });
+          });
       }
-    }),
-
-    // If you have external dependencies installed from
-    // npm, you'll most likely need these plugins. In
-    // some cases you'll need additional configuration —
-    // consult the documentation for details:
-    // https://github.com/rollup/rollup-plugin-commonjs
-    resolve(),
-    commonjs(),
-
-    // If we're building for production (npm run build
-    // instead of npm run dev), minify
-    production && terser()
-  ]
+    );
+  });
 };
+
+const plugins = [
+  svelte({
+    skipIntroByDefault: true,
+    nestedTransitions: true,
+    customElement: true,
+    dev: !production,
+    preprocess: { style: proprocessStyle }
+  }),
+  resolve(),
+  commonjs(),
+  production && terser()
+];
+
+export default [
+  {
+    input: "src/Button.html",
+    output: {
+      // sourcemap: true,
+      format: "iife",
+      name: "button",
+      file: "dist/button.js"
+    },
+    plugins
+  }
+];

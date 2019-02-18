@@ -39,7 +39,9 @@ Panda UI is a set of stylesheets and web components in the likeness (and based o
 
 ```html
 <panda-alert variant="success">
-  <div slot="icon"><panda-icon-checkmark></panda-icon-checkmark></div>
+  <div slot="icon">
+    <panda-icon-checkmark></panda-icon-checkmark>
+  </div>
   <div slot="content">
     Sample success alert text.
   </div>

@@ -38,6 +38,7 @@
     "react-dom": "^16.8.2"
   },
   "files": [
+    "index.html",
     "dist/**"
   ]
 }

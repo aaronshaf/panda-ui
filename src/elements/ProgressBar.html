@@ -1,0 +1,30 @@
+<div class="{theme}-theme View-root root medium default">
+  <progress
+    class="bar"
+    max="{max}"
+    value="{value}"
+    aria-valuetext="{max}"
+    aria-valuenow="{value}"
+    aria-valuemax="{max}"
+    aria-label="{label}"
+  />
+</div>
+
+<style type="text/scss">
+  @import "./themes/canvas/ProgressBar.scss";
+  @import "./themes/canvas-high-contrast/ProgressBar.scss";
+  @import "../styles/ProgressBar.scss";
+</style>
+
+<script>
+  export default {
+    tag: "panda-progress-bar",
+    data(a, b) {
+      return {
+        theme: document.firstChild.dataset.theme || "canvas",
+        value: 0,
+        max: 1
+      };
+    }
+  };
+</script>

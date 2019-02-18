@@ -8,6 +8,7 @@ const { generatePropsFromTheme } = require("./utils.js");
 mkdirp.sync(__dirname + "/../dist/themes");
 mkdirp.sync(__dirname + "/../dist/icons");
 mkdirp.sync(__dirname + "/../dist/elements");
+mkdirp.sync(__dirname + "/styles");
 mkdirp.sync(__dirname + "/themes/canvas");
 mkdirp.sync(__dirname + "/themes/canvas-high-contrast");
 
@@ -23,10 +24,13 @@ fs.writeFileSync(
 const { Button, CloseButton } = require("@instructure/ui-buttons");
 const { Alert } = require("@instructure/ui-alerts");
 const { Avatar } = require("@instructure/ui-elements");
+const ProgressBar = require("@instructure/ui-elements/lib/components/Progress/ProgressBar")
+  .default;
 const { View } = require("@instructure/ui-layout");
 
 [
   [Avatar, "Avatar"],
+  [ProgressBar, "ProgressBar"],
   [Alert, "Alert"],
   [Button, "Button"],
   [CloseButton, "CloseButton"],

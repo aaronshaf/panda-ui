@@ -1,29 +1,31 @@
-<html>
+<html data-theme="canvas">
   <head>
     <title>Panda UI demo</title>
 
     <!-- Polyfills as necessary (Edge) -->
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2/webcomponents-loader.js"></script>
 
+    <!-- local dev -->
+    <script src="dist/elements/alert.js" defer></script>
+    <script src="dist/elements/avatar.js" defer></script>
+    <script src="dist/elements/button.js" defer></script>
+    <script src="dist/elements/progress-bar.js" defer></script>
+    <script src="dist/elements/close-button.js" defer></script>
+    <script src="dist/icons/warning.js" defer></script>
+    <script src="dist/icons/checkmark.js" defer></script>
+    <script src="dist/icons/info.js" defer></script>
+    <script src="dist/icons/no.js" defer></script>
+    <!-- Or use <script src="https://unpkg.com/@aaronshaf/panda-ui@1.0.0/dist/button.js" defer></script>, etc. -->
+
     <!-- Global stylesheet -->
     <link rel="stylesheet" href="dist/themes/canvas.css" />
-
-    <!-- local dev -->
-    <script type="module" src="dist/elements/alert.js"></script>
-    <script type="module" src="dist/elements/button.js"></script>
-    <script type="module" src="dist/elements/close-button.js"></script>
-    <script type="module" src="dist/icons/warning.js"></script>
-    <script type="module" src="dist/icons/checkmark.js"></script>
-    <script type="module" src="dist/icons/info.js"></script>
-    <script type="module" src="dist/icons/no.js"></script>
-    <!-- <script src="https://unpkg.com/@aaronshaf/panda-ui@1.0.0/dist/button.js"></script> -->
-
     <style>
-      body {
-        font-family: var(--typography-fontFamily);
-      }
+      /* Avoid flash of undefined elements */
       *:not(:defined) {
         visibility: hidden;
+      }
+      body {
+        font-family: var(--typography-fontFamily);
       }
       panda-alert {
         display: block;
@@ -35,18 +37,23 @@
   <body>
     <h1>Panda UI</h1>
 
+    <p>View my source!</p>
+
     <section>
       <h2>Alerts</h2>
+
       <panda-alert variant="success">
         <div slot="icon"><panda-icon-checkmark></panda-icon-checkmark></div>
         <div slot="content">
           Sample success alert text.
         </div>
       </panda-alert>
+
       <panda-alert variant="info">
         <div slot="icon"><panda-icon-info></panda-icon-info></div>
         <div slot="content">Sample info text.</div>
       </panda-alert>
+
       <panda-alert variant="error">
         <div slot="icon"><panda-icon-no></panda-icon-no></div>
         <div slot="content">
@@ -56,11 +63,13 @@
           resolution screen.
         </div>
       </panda-alert>
+
       <panda-alert variant="warning">
         <div slot="icon"><panda-icon-warning></panda-icon-warning></div>
         <div slot="content">Sample warning text.</div>
       </panda-alert>
     </section>
+
     <section>
       <h2>Buttons</h2>
       <panda-button variant="primary">Primary button</panda-button>
@@ -70,5 +79,21 @@
       <panda-button variant="ghost">Ghost button</panda-button>
       <panda-button variant="link">Link button</panda-button>
     </section>
+
+    <section>
+      <h2>Progress Bar</h2>
+      <panda-progress-bar
+        label="Loading completion"
+        max="60"
+        value="20"
+        variant="primary"
+        >Primary button</panda-progress-bar
+      >
+    </section>
+
+    <script src="https://unpkg.com/github-corner@2.0.3"></script>
+    <github-corner>
+      <a href="https://github.com/aaronshaf/panda-ui">GitHub</a>
+    </github-corner>
   </body>
 </html>

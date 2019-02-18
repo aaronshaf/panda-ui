@@ -16,7 +16,7 @@ const proprocessStyle = ({ content, attributes }) => {
     sass.render(
       {
         data: content,
-        includePaths: ["src"],
+        includePaths: ["src", "src/elements"],
         sourceMap: true,
         outFile: "x" // necessary but ignored
       },
@@ -40,7 +40,6 @@ const plugins = [
   svelte({
     skipIntroByDefault: true,
     nestedTransitions: true,
-    customElement: true,
     dev: !production,
     preprocess: { style: proprocessStyle }
   }),
@@ -50,9 +49,10 @@ const plugins = [
 ];
 
 const components = [
-  ["src/elements/Avatar.html", "dist/elements/avatar.js"],
   ["src/elements/Alert.html", "dist/elements/alert.js"],
+  ["src/elements/Avatar.html", "dist/elements/avatar.js"],
   ["src/elements/Button.html", "dist/elements/button.js"],
+  ["src/elements/ProgressBar.html", "dist/elements/progress-bar.js"],
   ["src/elements/CloseButton.html", "dist/elements/close-button.js"],
   ["src/icons/Warning.html", "dist/icons/warning.js"],
   ["src/icons/Checkmark.html", "dist/icons/checkmark.js"],

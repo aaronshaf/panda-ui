@@ -4,6 +4,7 @@ public/bundle.*
 package-lock.json
 yarn.lock
 public
+src/styles
 src/themes
 dist
 dev2.html

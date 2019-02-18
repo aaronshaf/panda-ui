@@ -1,4 +1,4 @@
-Panda UI is a set of stylesheets and web components in the likeness of [InstUI](https://github.com/instructure/instructure-ui).
+Panda UI is a set of stylesheets and web components in the likeness (and based on the work of) [InstUI](https://github.com/instructure/instructure-ui).
 
 ## Global stylesheets
 

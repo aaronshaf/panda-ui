@@ -15,7 +15,7 @@
     <script src="dist/icons/checkmark.js" defer></script>
     <script src="dist/icons/info.js" defer></script>
     <script src="dist/icons/no.js" defer></script>
-    <!-- Or use <script src="https://unpkg.com/@aaronshaf/panda-ui@1.0.0/dist/button.js" defer></script>, etc. -->
+    <!-- Or use <script src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/button.js" defer></script>, etc. -->
 
     <!-- Global stylesheet -->
     <link rel="stylesheet" href="dist/themes/canvas.css" />
@@ -24,13 +24,15 @@
       *:not(:defined) {
         visibility: hidden;
       }
+
+      /* Example usage of canvas.css custom properties */
       body {
         font-family: var(--typography-fontFamily);
       }
       panda-alert {
         display: block;
-        margin-top: 8px;
-        margin-bottom: 8px;
+        margin-top: var(--spacing-xSmall);
+        margin-bottom: var(--spacing-xSmall);
       }
     </style>
   </head>

@@ -1,0 +1,595 @@
+/* stylelint-disable selector-max-class, no-descending-specificity */
+
+/*
+
+NOTE ABOUT ICON STYLES: If you make changes to the Button icon styles,
+be sure you are not breaking the following deprecated use cases where
+the icon is inserted as a child:
+
+<Button>
+  <SomeIcon />
+  Button label
+</Button>
+
+<Button variant=[circle-primary, circle-danger, icon, icon-inverse]>
+  <SomeIcon />
+</Button>
+
+*/
+
+.root[type="button"],
+.root[type="reset"],
+.root[type="submit"],
+.root {
+  appearance: none;
+}
+
+.root::-moz-focus-inner {
+  border: 0; /* removes default dotted focus outline in Firefox */
+}
+
+.root {
+  all: initial;
+  box-sizing: border-box;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: visible;
+  direction: inherit;
+  margin: 0;
+  text-decoration: none; /* for links styled as buttons */
+  user-select: none;
+  touch-action: manipulation;
+  transition: background 0.2s, transform 0.2s;
+  transform: var(--transform);
+  font-family: var(--fontFamily);
+  font-weight: var(--fontWeight);
+  text-transform: var(--textTransform);
+  letter-spacing: var(--letterSpacing);
+  border-style: var(--borderStyle);
+  border-width: var(--borderWidth);
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.3125rem;
+    left: -0.3125rem; /* stylelint-disable-line property-blacklist */
+    right: -0.3125rem; /* stylelint-disable-line property-blacklist */
+    bottom: -0.3125rem;
+    border: var(--focusBorder);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.2s;
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+
+  &:focus {
+    outline: none;
+
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:hover {
+    transform: var(--hoverTransform);
+  }
+
+  /*
+  * Ensures that button or link is always the event target.
+  */
+  * {
+    /* stylelint-disable-line selector-max-universal */
+    pointer-events: none;
+  }
+}
+
+.content {
+  box-sizing: border-box;
+}
+
+/* Rectangular and square Buttons */
+.borderRadius--rounded {
+  border-radius: var(--borderRadius);
+
+  &::before {
+    border-radius: calc(var(--borderRadius) * 1.5);
+  }
+}
+
+/* Circular Buttons */
+.borderRadius--circle {
+  border-radius: 50%;
+
+  &::before {
+    border-radius: 50%;
+  }
+}
+
+/* Styles for square Buttons w/ only an icon and no visible children */
+.width--icon {
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+
+  &:focus,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+
+  &.small {
+    height: var(--smallHeight);
+    width: var(--smallHeight);
+
+    &:not(.has-icon) {
+      font-size: 1rem;
+    }
+
+    .iconSVG {
+      font-size: var(--iconSizeSmall);
+    }
+  }
+
+  &.medium {
+    height: var(--mediumHeight);
+    width: var(--mediumHeight);
+
+    &:not(.has-icon) {
+      font-size: 1.25rem;
+    }
+
+    .iconSVG {
+      font-size: var(--iconSizeMedium);
+    }
+  }
+
+  &.large {
+    height: var(--largeHeight);
+    width: var(--largeHeight);
+
+    &:not(.has-icon) {
+      font-size: 1.75rem;
+    }
+
+    .iconSVG {
+      font-size: var(--iconSizeLarge);
+    }
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+/* Shared styles between auto-width and fluid-width buttons */
+.width--auto,
+.width--fluid {
+  &.small {
+    font-size: var(--smallFontSize);
+    padding-left: var(
+      --smallPadding
+    ); /* stylelint-disable-line property-blacklist */
+    padding-right: var(
+      --smallPadding
+    ); /* stylelint-disable-line property-blacklist */
+
+    /* subtract the top and bottom border */
+    line-height: calc(var(--smallHeight) - (var(--borderWidth) * 2));
+
+    .iconSVG {
+      font-size: var(--iconSizeSmall);
+    }
+  }
+
+  &.medium {
+    font-size: var(--mediumFontSize);
+    padding-left: var(
+      --mediumPadding
+    ); /* stylelint-disable-line property-blacklist */
+    padding-right: var(
+      --mediumPadding
+    ); /* stylelint-disable-line property-blacklist */
+
+    /* subtract the top and bottom border */
+    line-height: calc(var(--mediumHeight) - (var(--borderWidth) * 2));
+
+    .iconSVG {
+      font-size: var(--iconSizeMedium);
+    }
+  }
+
+  &.large {
+    font-size: var(--largeFontSize);
+    padding-left: var(
+      --largePadding
+    ); /* stylelint-disable-line property-blacklist */
+    padding-right: var(
+      --largePadding
+    ); /* stylelint-disable-line property-blacklist */
+
+    /* subtract the top and bottom border */
+    line-height: calc(var(--largeHeight) - (var(--borderWidth) * 2));
+
+    .iconSVG {
+      font-size: var(--iconSizeLarge);
+    }
+  }
+
+  .content {
+    display: block;
+  }
+
+  .iconSVG {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0.1875rem;
+  }
+
+  /* hide this selector from Buttons with icon prop, without breaking existing icons-as-children */
+  &:not(.has-icon) .content > svg {
+    /* stylelint-disable-line selector-max-type */
+    font-size: var(--iconPlusTextFontSize);
+    margin-inline-end: var(--iconPlusTextMargin);
+    margin-inline-start: auto;
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateY(-0.0625rem);
+  }
+}
+
+.width--auto {
+  .content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.width--fluid {
+  display: block;
+  width: 100%;
+  text-align: start;
+
+  &.small .content {
+    padding-top: 0.375rem;
+    padding-bottom: 0.3125rem;
+  }
+
+  &.medium .content {
+    padding-top: 0.5625rem;
+    padding-bottom: 0.5625rem;
+  }
+
+  &.large .content {
+    padding-top: 0.6875rem;
+    padding-bottom: 0.6875rem;
+  }
+
+  .content {
+    word-wrap: break-word;
+    hyphens: auto;
+    line-height: var(--fluidWidthLineHeight);
+  }
+}
+
+.default,
+.ghost {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.default {
+  background: var(--defaultBackground);
+  color: var(--defaultColor);
+  border-color: var(--defaultBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--defaultHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--defaultColor);
+  }
+
+  &:active {
+    background: var(--defaultActiveBackground);
+    box-shadow: var(--defaultActiveBoxShadow);
+  }
+}
+
+.primary {
+  background: var(--primaryBackground);
+  color: var(--primaryColor);
+  border-color: var(--primaryBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--primaryHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--primaryColor);
+  }
+
+  &:active {
+    background: var(--primaryActiveBackground);
+    box-shadow: var(--primaryActiveBoxShadow);
+  }
+}
+
+.success {
+  background: var(--successBackground);
+  color: var(--successColor);
+  border-color: var(--successBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--successHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--successColor);
+  }
+
+  &:active {
+    background: var(--successActiveBackground);
+    box-shadow: var(--successActiveBoxShadow);
+  }
+}
+
+.danger {
+  background: var(--dangerBackground);
+  color: var(--dangerColor);
+  border-color: var(--dangerBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--dangerHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--dangerColor);
+  }
+
+  &:active {
+    background: var(--dangerActiveBackground);
+    box-shadow: var(--dangerActiveBoxShadow);
+  }
+}
+
+.light {
+  background: var(--lightBackground);
+  color: var(--lightColor);
+  border-color: var(--lightBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--lightHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--lightColor);
+  }
+
+  &:active {
+    background: var(--lightActiveBackground);
+    box-shadow: var(--lightActiveBoxShadow);
+  }
+}
+
+.ghost {
+  background: var(--ghostBackground);
+  color: var(--ghostColor);
+  border-style: var(--ghostBorderStyle);
+  border-color: var(--ghostBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--ghostHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--ghostColor);
+  }
+
+  &:active {
+    background: var(--ghostActiveBackground);
+    box-shadow: var(--ghostActiveBoxShadow);
+  }
+}
+
+.ghost-inverse {
+  background: var(--ghostInverseBackground);
+  color: var(--ghostInverseColor);
+  border-style: var(--ghostInverseBorderStyle);
+  border-color: var(--ghostInverseBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--ghostInverseHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--ghostInverseColor);
+  }
+
+  &:focus {
+    &::before {
+      border: var(--inverseFocusBorder);
+    }
+  }
+
+  &:active {
+    background: var(--ghostActiveBackground);
+    box-shadow: var(--ghostInverseActiveBoxShadow);
+  }
+}
+
+.link,
+.link-inverse {
+  background: transparent;
+  text-decoration: var(--linkTextDecoration);
+  border-color: var(--linkBorderColor);
+}
+
+.link {
+  color: var(--linkColor);
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--linkHoverColor);
+    text-decoration: underline;
+  }
+}
+
+.link-inverse {
+  color: var(--linkInverseColor);
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--linkInverseColor);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    &::before {
+      border: var(--inverseFocusBorder);
+    }
+  }
+}
+
+.circle-default {
+  background: var(--circleDefaultBackground);
+  color: var(--circleDefaultColor);
+  border-color: var(--circleDefaultBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--circleDefaultHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--circleDefaultColor);
+  }
+
+  &:active {
+    background: var(--circleDefaultActiveBackground);
+    box-shadow: var(--circleDefaultActiveBoxShadow);
+  }
+}
+
+.circle-primary {
+  background: var(--circlePrimaryBackground);
+  color: var(--circlePrimaryColor);
+  border-color: var(--circlePrimaryBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--circlePrimaryHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--circlePrimaryColor);
+  }
+
+  &:active {
+    background: var(--circlePrimaryActiveBackground);
+    box-shadow: var(--circlePrimaryActiveBoxShadow);
+  }
+}
+
+.circle-danger {
+  background: var(--circleDangerBackground);
+  color: var(--circleDangerColor);
+  border-color: var(--circleDangerBorderColor);
+
+  &:hover,
+  &:active {
+    background: var(--circleDangerHoverBackground);
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--circleDangerColor);
+  }
+
+  &:active {
+    background: var(--circleDangerActiveBackground);
+    box-shadow: var(--circleDangerActiveBoxShadow);
+  }
+}
+
+.icon,
+.icon-inverse {
+  border-color: var(--iconBorderColor);
+}
+
+.icon-inverse {
+  color: var(--iconInverseColor);
+
+  &:focus {
+    color: var(--iconInverseHoverColor);
+
+    &::before {
+      border-color: var(--ghostInverseBorderColor);
+    }
+  }
+
+  &:hover,
+  &:active {
+    color: var(--iconInverseHoverColor);
+  }
+}
+
+.icon {
+  color: var(--iconColor);
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: var(--iconHoverColor);
+  }
+}
+
+/* If icons are passed in as elements instead of functions, guarantee
+the SVG will display block */
+.iconSVG > svg {
+  /* stylelint-disable-line selector-max-type */
+  display: block;
+}
+
+/* stylelint-enable selector-max-class, no-descending-specificity */

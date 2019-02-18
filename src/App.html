@@ -1,0 +1,46 @@
+<h1>Panda UI</h1>
+
+<section>
+  <h2>Alert</h2>
+  <panda-alert variant="primary">
+    <svg
+      slot="icon"
+      aria-hidden="true"
+      focusable="false"
+      height="1em"
+      role="presentation"
+      viewBox="0 0 1920 1920"
+      width="1em"
+    >
+      <g role="presentation">
+        <path
+          d="M1743.858 267.012L710.747 1300.124 176.005 765.382 0 941.387l710.747 710.871 1209.24-1209.116z"
+          fill="currentColor"
+          stroke="none"
+          stroke-width="1"
+        ></path>
+      </g>
+    </svg>
+    <span slot="content">Alert Content</span>
+  </panda-alert>
+</section>
+
+<section>
+  <h2>Buttons</h2>
+  <panda-button variant="primary">Primary button!</panda-button>
+  <panda-button variant="success">Success button</panda-button>
+  <panda-button variant="danger">Danger button</panda-button>
+  <panda-button variant="light">Light button</panda-button>
+  <panda-button variant="ghost">Ghost button</panda-button>
+  <panda-button variant="link">Link button</panda-button>
+</section>
+
+<script>
+  import Alert from "./Alert.html";
+  import Button from "./Button.html";
+
+  export default {
+    components: {},
+    tag: "panda-ui"
+  };
+</script>

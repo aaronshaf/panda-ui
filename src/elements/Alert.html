@@ -1,0 +1,19 @@
+<div class="alert {variant}">
+  <div class="icon">
+    <slot name="icon">[icon]</slot>
+  </div>
+  <div class="content">
+    <slot name="content"></slot>
+  </div>
+</div>
+
+<style type="text/scss">
+  @import "./themes/canvas/Alert.scss";
+  @import "./Alert.scss";
+</style>
+
+<script>
+  export default {
+    tag: "panda-alert"
+  };
+</script>

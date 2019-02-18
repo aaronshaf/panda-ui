@@ -1,16 +1,36 @@
 <html>
   <head>
-    <script src="https://unpkg.com/@webcomponents/custom-elements"></script>
-    <title>Panda UI</title>
-    <!-- <script type="module" src="dist/button.js"></script> -->
-    <script src="https://unpkg.com/@aaronshaf/panda-ui@1.0.0/dist/button.js"></script>
+    <title>Panda UI demo</title>
+
+    <!-- Polyfills as necessary (Edge) -->
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
+
+    <!-- local dev -->
+    <script type="module" src="dist/elements/alert.js"></script>
+    <script type="module" src="dist/elements/button.js"></script>
+    <script type="module" src="dist/icons/warning.js"></script>
+    <!-- <script src="https://unpkg.com/@aaronshaf/panda-ui@1.0.0/dist/button.js"></script> -->
+
+    <style>
+      *:not(:defined) {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
     <h1>Panda UI</h1>
 
     <section>
+      <h2>Alerts</h2>
+      <panda-alert variant="warning">
+        <div slot="icon"><panda-icon-warning></panda-icon-warning></div>
+        <div slot="content">Pandas have arrived!</div>
+      </panda-alert>
+    </section>
+
+    <section>
       <h2>Buttons</h2>
-      <panda-button variant="primary">Primary button!</panda-button>
+      <panda-button variant="primary">Primary button</panda-button>
       <panda-button variant="success">Success button</panda-button>
       <panda-button variant="danger">Danger button</panda-button>
       <panda-button variant="light">Light button</panda-button>

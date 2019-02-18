@@ -6,6 +6,7 @@ const canvasHighContrast = require("@instructure/ui-themes/lib/canvas/high-contr
 const { generatePropsFromTheme } = require("./utils.js");
 
 mkdirp.sync(__dirname + "/../dist/themes");
+mkdirp.sync(__dirname + "/../dist/icons");
 mkdirp.sync(__dirname + "/../dist/elements");
 mkdirp.sync(__dirname + "/themes/canvas");
 mkdirp.sync(__dirname + "/themes/canvas-high-contrast");
@@ -20,20 +21,25 @@ fs.writeFileSync(
 );
 
 const { Button, CloseButton } = require("@instructure/ui-buttons");
+const { Alert } = require("@instructure/ui-alerts");
+
 const { View } = require("@instructure/ui-layout");
 
-[[Button, "Button"], [CloseButton, "CloseButton"], [View, "View"]].forEach(
-  ([component, name]) => {
-    fs.writeFileSync(
-      __dirname + `/themes/canvas/${name}.scss`,
-      generatePropsFromTheme(`.${name}`, component.generateTheme())
-    );
-    fs.writeFileSync(
-      __dirname + `/themes/canvas-high-contrast/${name}.scss`,
-      generatePropsFromTheme(
-        `.${name}`,
-        component.generateTheme("canvas-high-contrast")
-      )
-    );
-  }
-);
+[
+  [Alert, "Alert"],
+  [Button, "Button"],
+  [CloseButton, "CloseButton"],
+  [View, "View"]
+].forEach(([component, name]) => {
+  fs.writeFileSync(
+    __dirname + `/themes/canvas/${name}.scss`,
+    generatePropsFromTheme(`.${name}`, component.generateTheme())
+  );
+  fs.writeFileSync(
+    __dirname + `/themes/canvas-high-contrast/${name}.scss`,
+    generatePropsFromTheme(
+      `.${name}`,
+      component.generateTheme("canvas-high-contrast")
+    )
+  );
+});

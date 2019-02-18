@@ -16,13 +16,15 @@
     "svelte": "^2.13.5"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "yarn run prepare && rollup -c",
     "autobuild": "rollup -c -w",
-    "dev": "run-p start:dev autobuild",
+    "dev": "yarn run prepare && run-p start:dev autobuild",
     "start": "sirv public",
-    "start:dev": "sirv public --dev"
+    "start:dev": "sirv public --dev",
+    "prepare": "node src/import-styles.js && node src/export-themes.js"
   },
   "dependencies": {
+    "@instructure/ui-alerts": "^5.41.1",
     "@instructure/ui-buttons": "^5.41.1",
     "@instructure/ui-layout": "^5.41.1",
     "@instructure/ui-themes": "^5.41.1",

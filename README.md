@@ -18,12 +18,17 @@ Panda UI is a set of stylesheets and web components in the likeness of [InstUI](
 
 ## Web components
 
+```html
+<script src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/button.js"></script>
+<panda-button variant="primary">Primary button</panda-button>
+```
+
 ### Button
 
 ## Dev
 
 ```
 yarn
-node src/export-themes.js
+yarn run prepare
 yarn run build
 ```

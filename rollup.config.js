@@ -50,25 +50,20 @@ const plugins = [
   production && terser()
 ];
 
-export default [
-  {
-    input: "src/Button.html",
-    output: {
-      // sourcemap: true,
-      format: "iife",
-      name: "Button",
-      file: "dist/elements/button.js"
-    },
-    plugins
-  },
-  {
-    input: "src/CloseButton.html",
-    output: {
-      // sourcemap: true,
-      format: "iife",
-      name: "CloseButton",
-      file: "dist/elements/close-button.js"
-    },
-    plugins
-  }
+const components = [
+  ["src/elements/Alert.html", "dist/elements/alert.js"],
+  ["src/elements/Button.html", "dist/elements/button.js"],
+  ["src/icons/Warning.html", "dist/icons/warning.js"]
+  // ["src/CloseButton.html", "dist/elements/close-button.js"]
 ];
+
+export default components.map(([from, to]) => ({
+  input: from,
+  output: {
+    // sourcemap: true,
+    format: "iife",
+    name: "Button",
+    file: to
+  },
+  plugins
+}));

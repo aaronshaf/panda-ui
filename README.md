@@ -51,7 +51,7 @@ Panda UI is a set of stylesheets and web components in the likeness (and based o
 ### Button
 
 ```html
-<script src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/element/button.js"></script>
+<script src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/elements/button.js"></script>
 ```
 
 ```html

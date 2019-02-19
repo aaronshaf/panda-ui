@@ -18,8 +18,9 @@
   export default {
     tag: "panda-avatar",
     data() {
+      const htmlElm = document.querySelector("html") || { dataset: {} };
       return {
-        theme: document.firstChild.dataset.theme || "canvas"
+        theme: htmlElm.dataset.theme || "canvas"
       };
     }
   };

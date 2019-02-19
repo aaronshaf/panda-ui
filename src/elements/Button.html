@@ -14,8 +14,9 @@
   export default {
     tag: "panda-button",
     data() {
+      const htmlElm = document.querySelector("html") || { dataset: {} };
       return {
-        theme: document.firstChild.dataset.theme || "canvas"
+        theme: htmlElm.dataset.theme || "canvas"
       };
     }
   };

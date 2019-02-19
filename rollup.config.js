@@ -38,6 +38,7 @@ const proprocessStyle = ({ content, attributes }) => {
 
 const plugins = [
   svelte({
+    customElement: true,
     skipIntroByDefault: true,
     nestedTransitions: true,
     dev: !production,

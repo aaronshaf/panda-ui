@@ -1,6 +1,6 @@
 Panda UI is an experimental set of stylesheets and web components in the likeness (and based on the work of) [InstUI](https://github.com/instructure/instructure-ui).
 
-## Stylesheets
+## Theme stylesheets
 
 ```html
 <link
@@ -23,6 +23,8 @@ Panda UI is an experimental set of stylesheets and web components in the likenes
 ```
 
 ## Web components
+
+These are self-contained and do not depend on a theme stylesheet.
 
 ### Alert
 
@@ -78,6 +80,14 @@ Panda UI is an experimental set of stylesheets and web components in the likenes
 >
   Primary button
 </panda-progress-bar>
+```
+
+### Specifying a theme
+
+For now you can specify a theme on the `html` element:
+
+```
+<html data-theme="canvas">
 ```
 
 ## Dev

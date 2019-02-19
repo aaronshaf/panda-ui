@@ -41,7 +41,7 @@ or
 
 ```javascript
 import "@aaronshaf/panda-ui/dist/elements/alert.js";
-import "@aaronshaf/panda-ui/dist/icons/checkmark.js.js";
+import "@aaronshaf/panda-ui/dist/icons/checkmark.js";
 ```
 
 ```html

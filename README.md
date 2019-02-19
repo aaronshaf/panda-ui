@@ -37,6 +37,13 @@ Panda UI is an experimental set of stylesheets and web components in the likenes
 ></script>
 ```
 
+or
+
+```javascript
+import "@aaronshaf/panda-ui/dist/elements/alert.js";
+import "@aaronshaf/panda-ui/dist/icons/checkmark.js.js";
+```
+
 ```html
 <panda-alert variant="success">
   <div slot="icon">
@@ -54,6 +61,12 @@ Panda UI is an experimental set of stylesheets and web components in the likenes
 <script src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/elements/button.js"></script>
 ```
 
+or
+
+```javascript
+import "@aaronshaf/panda-ui/dist/elements/button.js";
+```
+
 ```html
 <panda-button variant="primary">
   Primary button
@@ -67,6 +80,12 @@ Panda UI is an experimental set of stylesheets and web components in the likenes
   src="https://unpkg.com/@aaronshaf/panda-ui@1/dist/elements/progress-bar.js"
   defer
 ></script>
+```
+
+or
+
+```javascript
+import "@aaronshaf/panda-ui/dist/elements/progress-bar.js";
 ```
 
 ```html

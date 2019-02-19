@@ -24,8 +24,6 @@ Panda UI is an experimental set of stylesheets and web components in the likenes
 
 ## Web components
 
-These are self-contained and do not depend on a theme stylesheet.
-
 ### Alert
 
 ```html
@@ -80,14 +78,6 @@ These are self-contained and do not depend on a theme stylesheet.
 >
   Primary button
 </panda-progress-bar>
-```
-
-### Specifying a theme
-
-You can specify a theme for web components on the `html` element:
-
-```
-<html data-theme="canvas">
 ```
 
 ## Dev

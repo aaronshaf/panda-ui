@@ -84,7 +84,7 @@ These are self-contained and do not depend on a theme stylesheet.
 
 ### Specifying a theme
 
-For now you can specify a theme on the `html` element:
+You can specify a theme for web components on the `html` element:
 
 ```
 <html data-theme="canvas">
